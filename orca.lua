@@ -1,5 +1,8 @@
--- ORCA
--- v0.9.9.9 @its_your_bedtime
+-- Crow_ORCA v0.0.0.1 @CoolLeRue aka TanSat aka Tan Saturn
+-- Crow CV Out ~...... [channel 0 or 1][Octave][Note][Attack][Release][Level 0-9]
+-- Crow JF.ii  =..... [channel 0-5][Octave][Note][Level][Repeats]
+
+-- Built upon ORCA v0.9.9.9 @its_your_bedtime. I really have not added much to this other than Crow support. 
 -- llllllll.co/t/orca
 
 local tab = require 'tabutil'
