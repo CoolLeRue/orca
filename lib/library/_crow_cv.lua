@@ -76,8 +76,9 @@ local crow_cv = function (self, x, y)
 	local channel = util.clamp( self:listen( self.x + 1, self.y ) or 0, 0, 1 )
 	print(channel)
 	print( self:listen( self.x + 2, self.y ))
-	local ocatave = self:listen( self.x + 2, self.y ) or 1
+	local octave = self:listen( self.x + 2, self.y ) or 1
 	print(octave)
+	print( self:listen( self.x + 1, self.y ))
 	local n = tostring(self:glyph_at(self.x + 3, self.y)) or 'C'
 	print(n)
 	local note = cv_transpose_table[n]
