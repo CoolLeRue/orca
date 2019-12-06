@@ -84,7 +84,7 @@ local crow_cv = function (self, x, y)
 	local octave = self:listen( self.x + 2, self.y ) or 1
 	local n = tostring(self:glyph_at(self.x + 3, self.y)) or 'C'
 	local note = cv_transpose_table[n] or .08
-	local attack = util.linlin(0, 32, 0.0, 5,self:listen( self.x + 4, self.y ) or 0)
+	local attack = util.linlin(0, 32, -5, 1,self:listen( self.x + 4, self.y ) or 0)
 	local release = util.linlin(0, 32, 0.0, 5,self:listen( self.x + 5, self.y ) or 1)
 	local volts = octave + note
 	
