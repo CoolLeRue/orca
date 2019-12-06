@@ -70,6 +70,9 @@ local crow_cv = function (self, x, y)
   	['8'] = 4.833,
   	['9'] = 4.916,
 	}
+	print(self.x)
+	print(self.y)
+	print( self:listen( self.x + 1, self.y ))
 	local channel = util.clamp( self:listen( self.x + 1, self.y ) or 0, 0, 1 )
 	print(channel)
 	local ocatave = 0, 8, util.clamp( self:listen( self.x + 2, self.y ) or 1 )
