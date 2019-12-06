@@ -86,5 +86,6 @@ local crow_cv = function (self, x, y)
 		crow.output[1].volts = volts
 		crow.output[2].action = "{to(8,"..attack.."),to(0,"..release..")}"
     end
+end
 
 return crow_cv
