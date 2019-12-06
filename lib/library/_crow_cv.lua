@@ -83,8 +83,8 @@ local crow_cv = function (self, x, y)
 	print(n)
 	local note = cv_transpose_table[n]
 	print(note)
-	local attack =  ( self:listen( self.x + 4, self.y ) or 0
-	local release = ( self:listen( self.x + 5, self.y ) or 1
+	local attack =  self:listen( self.x + 4, self.y ) or 0
+	local release = self:listen( self.x + 5, self.y ) or 1
 	local volts = octave + note
     
 	if self:neighbor(self.x, self.y, '*') then
