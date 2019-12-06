@@ -14,5 +14,5 @@ local crow_cv = function (self, x, y)
 
 	if self:neighbor(self.x, self.y, '*') then
 		crow.output[(channel + 1)].volts = (octave + note)
-        crow.output[(channel + 2)].ar(attack, release)
+		crow.output[(channel + 2)].ar(attack, release)
   end
