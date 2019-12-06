@@ -87,8 +87,8 @@ local crow_cv = function (self, x, y)
 	local attack =  self:listen( self.x + 4, self.y ) or 0
 	local release = self:listen( self.x + 5, self.y ) or 1
 	local volts = octave + note
-	print(channel)
-	print(ar_channel)
+	
+	
 	if self:neighbor(self.x, self.y, '*') then
 		crow.output[channel].volts = volts
 		crow.output[ar_channel].action = "ar("..attack..","..release..")"
