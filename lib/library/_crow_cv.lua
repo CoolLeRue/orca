@@ -72,9 +72,11 @@ local crow_cv = function (self, x, y)
 	}
 	
 
-	if (util.clamp( 0, 1, self:listen( self.x + 1, self.y ) or 0 ) == 0) then
-		local channel = 1
-		local ar_channel = 2
+	local channel = 1
+	local ar_channel = 2
+	if (self:listen( self.x + 1, self.y ) == 0) then
+		channel = 1
+		ar_channel = 2
 	else
 		channel = 3
 		ar_channel = 4
