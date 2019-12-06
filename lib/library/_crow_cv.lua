@@ -84,7 +84,7 @@ local crow_cv = function (self, x, y)
     print(release)
 	if self:neighbor(self.x, self.y, '*') then
 		crow.output[1].volts = volts
-		crow.output[2].ar(attack, release)
+		crow.output[2].event()
     end
 end
 
