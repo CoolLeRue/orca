@@ -70,8 +70,15 @@ local crow_cv = function (self, x, y)
   	['8'] = 4.833,
   	['9'] = 4.916,
 	}
-	local channel = util.clamp( 0, 1, self:listen( self.x + 1, self.y ) or 0 ) + 2
-	local ar_channel = util.clamp( 0, 1, self:listen( self.x + 1, self.y ) or 0 ) + 3
+	
+
+	if util.clamp( 0, 1, self:listen( self.x + 1, self.y ) or 0 ) == 0 then
+		local channel = 1
+		local ar_channel = 2
+	else
+		channel = 3
+		ar_channel = 4
+	end
 	local octave = self:listen( self.x + 2, self.y ) or 1
 	local n = tostring(self:glyph_at(self.x + 3, self.y)) or 'C'
 	local note = cv_transpose_table[n] or .08
