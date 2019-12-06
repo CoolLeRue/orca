@@ -80,9 +80,9 @@ local crow_cv = function (self, x, y)
 	local volts = octave + note
 
 	if self:neighbor(self.x, self.y, '*') then
-		crow.output[1].volts = volts
-		crow.output[2].action = "ar("..attack..","..release..")"
-		crow.output[2].execute()
+		crow.output[channel].volts = volts
+		crow.output[ar_channel].action = "ar("..attack..","..release..")"
+		crow.output[ar_channel].execute()
     end
 end
 
