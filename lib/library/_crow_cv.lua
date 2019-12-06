@@ -93,7 +93,7 @@ local crow_cv = function (self, x, y)
 		crow.output[channel].volts = volts
 		crow.output[ar_channel].action = "ar("..attack..","..release..")"
 		crow.output[ar_channel].execute()
-    end
+  end
 end
 
 return crow_cv
