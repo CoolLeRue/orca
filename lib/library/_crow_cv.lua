@@ -73,7 +73,7 @@ local crow_cv = function (self, x, y)
 	local channel = util.clamp( self:listen( self.x + 1, self.y ) or 0, 0, 1 )
 	local octave = self:listen( self.x + 2, self.y ) or 1
 	local n = tostring(self:glyph_at(self.x + 3, self.y)) or 'C'
-	local note = cv_transpose_table[n]
+	local note = cv_transpose_table[n] or 'C'
 	local attack =  self:listen( self.x + 4, self.y ) or 0
 	local release = self:listen( self.x + 5, self.y ) or 1
 	local volts = octave + note
@@ -84,8 +84,7 @@ local crow_cv = function (self, x, y)
     print(release)
 	if self:neighbor(self.x, self.y, '*') then
 		crow.output[1].volts = volts
-		crow.output[2].execute()
+		crow.output[2].action = "{to(8,"..attack.."),to(0,"..release..")}"
     end
-end
 
 return crow_cv
