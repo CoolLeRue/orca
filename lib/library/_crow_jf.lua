@@ -1,5 +1,7 @@
 local crow_ii_jf = function (self, x, y)
 	
+	crow.ii.pullup(true)
+	crow.ii.jf.mode(1)
 	self.y = y
 	self.x = x
 	self.name = 'crow_ii_jf'
@@ -16,6 +18,7 @@ local crow_ii_jf = function (self, x, y)
 
 	if self:neighbor(self.x, self.y, '*') then
 		crow.ii.jf.play_voice(channel, self:note_freq(n)/12, level/reps )
+		redraw()
 	end
 
 
