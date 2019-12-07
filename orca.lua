@@ -6,7 +6,7 @@
 
 -- Built upon ORCA v0.9.9.9 @its_your_bedtime. I really have not added much to this other than Crow support. 
 -- llllllll.co/t/orca
-
+crow.ii.pullup(true)
 local tab = require 'tabutil'
 local fileselect = require "fileselect"
 local textentry = require "textentry"
