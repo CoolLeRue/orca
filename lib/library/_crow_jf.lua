@@ -17,6 +17,7 @@ local crow_jf = function (self, x, y)
 	
 
 	if self:neighbor(self.x, self.y, '*') then
+		
 		crow.ii.jf.play_voice(channel, self:note_freq(n)/12, level/1 )
 		redraw()
 	end
