@@ -87,12 +87,11 @@ local crow_cv = function (self, x, y)
 	local attack = util.linlin(0, 32, 0.00, 1.00,self:listen( self.x + 4, self.y ) or 0)
 	local release = util.linlin(0, 32, 0.0, 5,self:listen( self.x + 5, self.y ) or 1)
 	local volts = octave + note
-	local level = util.clamp(self:listen( self.x + 2, self.y ) or 8, 0, 10)
-  print(self:listen( self.x + 2, self.y ))
+	local level = util.clamp(self:listen( self.x + 6, self.y ) or 8, 0, 10)
+
 	if self:neighbor(self.x, self.y, '*') then
 		crow.output[channel].volts = volts
 		crow.output[ar_channel].action = "{to("..level..","..attack.."),to(0,"..release..")}"
-		print(level)
     crow.output[ar_channel].execute()
   end
 end
