@@ -1,4 +1,4 @@
-local crow_ii_jf = function (self, x, y)
+local crow_jf = function (self, x, y)
 	
 	crow.ii.pullup(true)
 	crow.ii.jf.mode(1)
@@ -25,4 +25,4 @@ local crow_ii_jf = function (self, x, y)
 
 end
 
-return crow_ii_jf
+return crow_jf
