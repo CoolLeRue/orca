@@ -14,7 +14,10 @@ local crow_jf = function (self, x, y)
 	local transposed = self:transpose( note, octave )
 	local n = transposed[1]
 	local level = util.clamp( self:listen( self.x + 4, self.y ) or 3, 0, 5 )
-	
+	print('n')
+	print(n)
+	print('note_freq')
+	print(self:note_freq(n)/12)
 
 	if self:neighbor(self.x, self.y, '*') then
 		
