@@ -15,7 +15,7 @@ local crow_jf = function (self, x, y)
 	local transposed = self:transpose( note, octave )
 	local n = transposed[1]
 	local level = util.clamp( self:listen( self.x + 4, self.y ) or 3, 0, 5 )
-	print('npte')
+	print('note')
 	print(note)
 	print('octave')
 	print(octave)
