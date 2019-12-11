@@ -1,5 +1,6 @@
 local crow_jf = function (self, x, y)
-	
+
+	--include('/lib/transpose')	
 	crow.ii.pullup(true)
 	crow.ii.jf.mode(1)
 	self.y = y
@@ -14,6 +15,12 @@ local crow_jf = function (self, x, y)
 	local transposed = self:transpose( note, octave )
 	local n = transposed[1]
 	local level = util.clamp( self:listen( self.x + 4, self.y ) or 3, 0, 5 )
+	print('npte')
+	print(note)
+	print('octave')
+	print(octave)
+	print('transposed')
+	print(transposed)
 	print('n')
 	print(n)
 	print('note_freq')
