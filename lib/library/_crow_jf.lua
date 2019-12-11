@@ -17,7 +17,7 @@ local crow_jf = function (self, x, y)
 	print('n')
 	print(n)
 	print('note_freq')
-	print(self:note_freq(n)/12)
+	print(self:note_freq(n))
 
 	if self:neighbor(self.x, self.y, '*') then
 		
