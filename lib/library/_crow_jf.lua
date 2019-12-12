@@ -13,7 +13,7 @@ local crow_jf = function (self, x, y)
 	local octave = util.clamp( self:listen( self.x + 2, self.y ) or 3, 0, 6 )
 	local note = self:glyph_at(self.x + 3, self.y) or 'C'
 	local transposed = self:transpose( note, octave )
-	local n = transposed[1]
+	local n = transposed[1] - 36
 	local level = util.clamp( self:listen( self.x + 4, self.y ) or 3, 0, 5 )
 	print('note')
 	print(note)
