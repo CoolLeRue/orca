@@ -1,11 +1,10 @@
 local crow_jf = function (self, x, y)
 
 	crow.ii.pullup(true)
-	crow.ii.jf.mode(1)
 	self.y = y
 	self.x = x
 	self.name = 'crow_ii_jf'
-	self.ports = { {1, 0, 'in-port' }, {2, 0, 'in-octave' }, {3, 0, 'in-note' }, {4, 0, 'in-level' }}
+	self.ports = { {1, 0, 'in-port' }, {2, 0, 'in-octave' }, {3, 0, 'in-note' }, {4, 0, 'in-level' }, {5, 0, 'in-mode'}}
 	self:spawn(self.ports)
 
 	local transpose_tab = {
@@ -96,14 +95,14 @@ local crow_jf = function (self, x, y)
 	--print(octave)
 	--print(transpose_tab[note])
 	local tot_note = transpose_tab[note] + octave
-	
+	local mode = util.clamp( self:listen( self.x + 5, self.y ) or 0, 0, 6 )
 
 	--print('tot_note')
 	--print(tot_note)
 
-
+    
 	if self:neighbor(self.x, self.y, '*') then
-		
+		crow.ii.jf.mode(mode)
 		crow.ii.jf.play_voice(channel, tot_note /12, level/1 )
 		redraw()
 	end
