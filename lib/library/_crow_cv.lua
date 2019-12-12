@@ -85,24 +85,24 @@ local crow_cv = function (self, x, y)
 	local n = tostring(self:glyph_at(self.x + 3, self.y)) or 'C'
 	local note = cv_transpose_table[n] or .08
 	--local attack = (self:listen( self.x + 4, self.y ) or 0) * .01
-  local attack = util.linlin(0, 35, 0.00, 2.00, self:listen( self.x + 4, self.y ) or 0)
+  local attack = util.linlin(0, 35, 0.00, 1.50, self:listen( self.x + 4, self.y ) or 0)
   --local release = (self:listen( self.x + 5, self.y ) or 1) * .001
 	local release = util.linlin(0, 35, 0.00, 3.00, self:listen( self.x + 5, self.y ) or 1)
 	local volts = octave + note
 	--local level = util.clamp(self:listen( self.x + 6, self.y ) or 8, 0, 10)
   local level = util.linlin(0, 35, 0.00, 10.00, self:listen( self.x + 6, self.y ) or 8)
-  print('Pre Attack')
-  print(self:listen( self.x + 4, self.y ))
-  print('Pre Level')
-  print(self:listen( self.x + 6, self.y ))
-  print('Pre Release')
-  print(self:listen( self.x + 5, self.y ))
-  print('Post Attack')
-  print(attack)
-  print('Post Level')
-  print(level)
-  print('Post Release')
-  print(release)
+  --print('Pre Attack')
+  --print(self:listen( self.x + 4, self.y ))
+  --print('Pre Level')
+  --print(self:listen( self.x + 6, self.y ))
+  --print('Pre Release')
+  --print(self:listen( self.x + 5, self.y ))
+  --print('Post Attack')
+  --print(attack)
+  --print('Post Level')
+  --print(level)
+  --print('Post Release')
+  --print(release)
 
 	if self:neighbor(self.x, self.y, '*') then
 		crow.output[channel].volts = volts
