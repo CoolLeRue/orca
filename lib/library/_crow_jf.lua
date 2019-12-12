@@ -78,12 +78,13 @@ local crow_jf = function (self, x, y)
 	local note = self:glyph_at(self.x + 3, self.y) or 'C'
 	local level = util.clamp( self:listen( self.x + 4, self.y ) or 3, 0, 5 )
 	
-	local tot_note = transpose_tab[note] + octave
-	
 	print('note')
 	print(note)
 	print('octave')
 	print(octave)
+	local tot_note = transpose_tab[note] + octave
+	
+
 	print('tot_note')
 	print(tot_note)
 
