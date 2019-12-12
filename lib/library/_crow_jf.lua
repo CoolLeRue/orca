@@ -1,6 +1,5 @@
 local crow_jf = function (self, x, y)
 
-	--include('/lib/transpose')	
 	crow.ii.pullup(true)
 	crow.ii.jf.mode(1)
 	self.y = y
@@ -9,7 +8,7 @@ local crow_jf = function (self, x, y)
 	self.ports = { {1, 0, 'in-port' }, {2, 0, 'in-octave' }, {3, 0, 'in-note' }, {4, 0, 'in-level' }}
 	self:spawn(self.ports)
 
-	local transpose_table = {
+	local transpose_tab = {
 	  ['A'] = 9,
 	  ['a'] = 10,
 	  ['B'] = 11,
@@ -78,7 +77,8 @@ local crow_jf = function (self, x, y)
 	local octave = (util.clamp( self:listen( self.x + 2, self.y ) or 3, 0, 6 ) * 12) - 36
 	local note = self:glyph_at(self.x + 3, self.y) or 'C'
 	local level = util.clamp( self:listen( self.x + 4, self.y ) or 3, 0, 5 )
-	local tot_note = transpose_table[note] + octave
+	
+	local tot_note = transpose_tab[note] + octave
 	
 	print('note')
 	print(note)
