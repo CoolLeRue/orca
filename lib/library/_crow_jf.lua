@@ -76,10 +76,16 @@ local crow_jf = function (self, x, y)
 	local channel = util.clamp( self:listen( self.x + 1, self.y ) or 0, 0, 5 ) + 1
 	local octave = (util.clamp( self:listen( self.x + 2, self.y ) or 3, 0, 6 ) * 12) - 36
 	local note = 'C'
+	print('note')
+	print(note)
 	if self:glyph_at(self.x + 3, self.y) == nil then 
 		note = 'C'
+		print('note')
+		print(note)
 	else
-		note = self:glyph_at(self.x + 3, self.y)	
+		note = self:glyph_at(self.x + 3, self.y)
+		print('note')
+	    print(note)	
 	end
 
 	local level = util.clamp( self:listen( self.x + 4, self.y ) or 3, 0, 5 )
