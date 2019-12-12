@@ -90,7 +90,7 @@ local crow_cv = function (self, x, y)
 	local release = util.linlin(0, 35, 0.00, 3.00, self:listen( self.x + 5, self.y ) or 1)
 	local volts = octave + note
 	--local level = util.clamp(self:listen( self.x + 6, self.y ) or 8, 0, 10)
-  local level = util.linlin(0, 35, 0.00, 10.00, self:listen( self.x + 6, self.y ) or 8)
+  local level = util.linlin(0, 35, 0.00, 10.00, self:listen( self.x + 6, self.y ) or 25)
   --print('Pre Attack')
   --print(self:listen( self.x + 4, self.y ))
   --print('Pre Level')
