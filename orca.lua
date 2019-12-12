@@ -6,6 +6,8 @@
 -- to this other than Crow support. 
 -- llllllll.co/t/orca
 crow.ii.pullup(true)
+crow.ii.jf.mode(1)
+
 local tab = require 'tabutil'
 local fileselect = require "fileselect"
 local textentry = require "textentry"
