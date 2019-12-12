@@ -78,7 +78,7 @@ local crow_jf = function (self, x, y)
 	local note = 'C'
 	print('note')
 	print(note)
-	if self:glyph_at(self.x + 3, self.y) == nil then 
+	if self:glyph_at(self.x + 3, self.y) == nil or '.' then 
 		note = 'C'
 		print('note')
 		print(note)
