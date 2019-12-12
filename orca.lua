@@ -344,9 +344,10 @@ function init()
   clock:start()
   --
   crow.ii.pullup(true)
-  crow.ii.jf.mode(1)
-  --
+  
   params:set("bpm", 120)
+  params:add_separator()
+  params:add{type = "number", id = "jf.ii mode", min = 0, max = 6, default = 1, action = funcion(x) crow.ii.jf.mode(x) end}
   params:add_separator()
   params:add_trigger('save_p', "< Save project" )
   params:set_action('save_p', function(x) textentry.enter(orca.save_project,  orca.project) end)
