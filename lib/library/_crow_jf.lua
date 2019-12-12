@@ -82,6 +82,7 @@ local crow_jf = function (self, x, y)
 	print(note)
 	print('octave')
 	print(octave)
+	print(transpose_tab[note])
 	local tot_note = transpose_tab[note] + octave
 	
 
