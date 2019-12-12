@@ -5,8 +5,7 @@
 -- I really have not added much 
 -- to this other than Crow support. 
 -- llllllll.co/t/orca
-crow.ii.pullup(true)
-crow.ii.jf.mode(1)
+
 
 local tab = require 'tabutil'
 local fileselect = require "fileselect"
@@ -343,6 +342,9 @@ function init()
   clock.on_step = function() orca:operate()  g:redraw() end,
   clock:add_clock_params()
   clock:start()
+  --
+  crow.ii.pullup(true)
+  crow.ii.jf.mode(1)
   --
   params:set("bpm", 120)
   params:add_separator()
