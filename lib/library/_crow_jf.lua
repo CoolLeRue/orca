@@ -10,7 +10,7 @@ local crow_jf = function (self, x, y)
 	self:spawn(self.ports)
 
 	local channel = util.clamp( self:listen( self.x + 1, self.y ) or 0, 0, 5 ) + 1
-	local octave = util.clamp( self:listen( self.x + 2, self.y ) or 3, 0, 6 ) - 3
+	local octave = util.clamp( self:listen( self.x + 2, self.y ) or 3, 0, 6 )
 	local note = self:glyph_at(self.x + 3, self.y) or 'C'
 	local transposed = self:transpose( note, octave )
 	local n = transposed[1]
@@ -19,8 +19,6 @@ local crow_jf = function (self, x, y)
 	print(note)
 	print('octave')
 	print(octave)
-	print('transposed')
-	print(transposed)
 	print('n')
 	print(n)
 	print('note_freq')
