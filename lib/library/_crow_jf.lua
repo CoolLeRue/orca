@@ -1,5 +1,5 @@
 local crow_jf = function (self, x, y)
-
+    crow.ii.jf.mode(0)
 	crow.ii.pullup(true)
 	self.y = y
 	self.x = x
@@ -98,8 +98,8 @@ local crow_jf = function (self, x, y)
 	local mode = util.clamp( self:listen( self.x + 5, self.y ) or 0, 0, 6 )
 	print(mode)
 
-	--print('tot_note')
-	--print(tot_note)
+	print('tot_note')
+	print(tot_note)
 
     
 	if self:neighbor(self.x, self.y, '*') then
