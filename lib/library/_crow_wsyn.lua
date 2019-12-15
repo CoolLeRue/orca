@@ -95,12 +95,13 @@ local crow_jf = function (self, x, y)
 	--print(transpose_tab[note])
 	local tot_note = transpose_tab[note] + octave
 	
-	--print('tot_note')
-	--print(tot_note)
+	print('tot_note')
+	print(tot_note)
 
     
 	if self:neighbor(self.x, self.y, '*') then
 		crow.ii.wsyn.play_voice(channel, tot_note /12, level/1 )
+		ii.wsyn.play_voice(channel, tot_note /12, level/1 )
 		redraw()
 	end
 
