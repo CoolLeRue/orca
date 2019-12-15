@@ -71,8 +71,8 @@ local crow_wsyn = function (self, x, y)
 	  ['9'] = 16,
 	}
 
-	local channel = util.clamp( self:listen( self.x + 1, self.y ) or 0, 0, 5 ) + 1
-	local octave = (util.clamp( self:listen( self.x + 2, self.y ) or 3, 0, 6 ) * 12) - 36
+	local channel = util.clamp( self:listen( self.x + 1, self.y ) or 0, 0, 7 ) + 1
+	local octave = (util.clamp( self:listen( self.x + 2, self.y ) or 3, 0, 7 ) * 12) - 36
 	local note = 'C'
 	--print('note')
 	--print(note)
@@ -88,11 +88,11 @@ local crow_wsyn = function (self, x, y)
 
 	local level = util.clamp( self:listen( self.x + 4, self.y ) or 3, 0, 5 )
 	
-	--print('note')
-	--print(note)
-	--print('octave')
-	--print(octave)
-	--print(transpose_tab[note])
+	print('note')
+	print(note)
+	print('octave')
+	print(octave)
+	print(transpose_tab[note])
 	local tot_note = transpose_tab[note] + octave
 	
 	print('tot_note')
@@ -101,7 +101,6 @@ local crow_wsyn = function (self, x, y)
     
 	if self:neighbor(self.x, self.y, '*') then
 		crow.ii.wsyn.play_voice(channel, tot_note /12, level/1 )
-		ii.wsyn.play_voice(channel, tot_note /12, level/1 )
 		redraw()
 	end
 
