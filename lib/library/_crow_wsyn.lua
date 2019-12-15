@@ -1,4 +1,4 @@
-local crow_jf = function (self, x, y)
+local crow_wsyn = function (self, x, y)
 
 	self.y = y
 	self.x = x
