@@ -3,7 +3,7 @@ local crow_wsyn = function (self, x, y)
 	self.y = y
 	self.x = x
 	self.name = 'crow_wsyn'
-	self.ports = { {1, 0, 'in-port' }, {2, 0, 'in-octave' }, {3, 0, 'in-note' }, {4, 0, 'in-level' }}
+	self.ports = { {1, 0, 'in-port' }, {2, 0, 'in-octave' }, {3, 0, 'in-note' }, {4, 0, 'in-level' }, {5, 0, 'in-lpgTime' }, {6, 0, 'in-lpgShape' }}
 	self:spawn(self.ports)
 
 	local transpose_tab = {
@@ -94,7 +94,8 @@ local crow_wsyn = function (self, x, y)
 	--print(octave)
 	--print(transpose_tab[note])
 	local tot_note = transpose_tab[note] + octave
-	
+	local time = util.linlin(0, 35, -5, 5, self:listen( self.x + 5, self.y ) or 17)
+	local shape = util.linlin(0, 35, -5, 5, self:listen( self.x + 6, self.y ) or 17)
 	--print('tot_note')
 	--print(tot_note)
 
@@ -102,7 +103,8 @@ local crow_wsyn = function (self, x, y)
 	if self:neighbor(self.x, self.y, '*') then
 		tot_note = tot_note / 12
 		crow.send("ii.wsyn.play_voice("..channel..", "..tot_note..", "..level.." )")
-		crow.send("ii.wsyn.play_voice("..channel..", "..tot_note..", "..level.." )")
+		crow.send("ii.wsyn.lpg_time("..time..")")
+		crow.send("ii.wsyn.lpg_symmetry("..shape..")")
 		redraw()
 	end
 
