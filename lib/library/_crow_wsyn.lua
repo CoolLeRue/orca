@@ -88,19 +88,20 @@ local crow_wsyn = function (self, x, y)
 
 	local level = util.clamp( self:listen( self.x + 4, self.y ) or 3, 0, 5 )
 	
-	print('note')
-	print(note)
-	print('octave')
-	print(octave)
-	print(transpose_tab[note])
+	--print('note')
+	--print(note)
+	--print('octave')
+	--print(octave)
+	--print(transpose_tab[note])
 	local tot_note = transpose_tab[note] + octave
 	
-	print('tot_note')
-	print(tot_note)
+	--print('tot_note')
+	--print(tot_note)
 
     
 	if self:neighbor(self.x, self.y, '*') then
-		crow.send("ii.wsyn.play_voice("..channel..", "..tot_note.. /12", "..level../1" )")
+		tot_note = tot_note / 12
+		crow.send("ii.wsyn.play_voice("..channel..", "..tot_note..", "..level.." )")
 		redraw()
 	end
 
