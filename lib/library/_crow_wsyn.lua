@@ -100,7 +100,7 @@ local crow_wsyn = function (self, x, y)
 
     
 	if self:neighbor(self.x, self.y, '*') then
-		crow.send("ii.wsyn.play_voice("..channel..", "..tot_note.. /12", level/"..level.." )")
+		crow.send("ii.wsyn.play_voice("..channel..", "..tot_note.. /12", "..level../1" )")
 		redraw()
 	end
 
