@@ -354,7 +354,7 @@ function init()
   params:set_action('new', function(x) init() end)
   params:add_separator()
   params:add{type = "number", id = "jf.ii mode", min = 0, max = 1, default = 1, action = function(x) crow.ii.jf.mode(x) end}
-  params:add{type = "number", id = "jf.ii God Note", min = 0, max = 1, default = 0, action = function(value) crow.ii.jf.god_mode(value)
+  params:add{type = "number", id = "jf.ii God Note", min = 0, max = 1, default = 0, action = function(value) crow.ii.jf.god_mode(value)}
   params:add_separator()
   params:add_control("EXT", "/ External level", controlspec.new(0, 1, 'lin', 0, 1, ""))
   params:set_action("EXT", function(x) audio.level_adc_cut(x) end)
