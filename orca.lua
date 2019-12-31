@@ -2,8 +2,8 @@
 -- aka TanSat aka Tan Saturn
 -- Built upon ORCA v0.9.9.9 
 -- by @its_your_bedtime. 
--- I really have not added much 
--- to this other than Crow support. 
+-- I have not added much to
+-- this other than Crow support. 
 -- llllllll.co/t/orca
 
 
@@ -344,7 +344,6 @@ function init()
   clock:start()
   --
   crow.ii.pullup(true)
-  
   params:set("bpm", 120)
   params:add_separator()
   params:add_trigger('save_p', "< Save project" )
@@ -355,7 +354,7 @@ function init()
   params:set_action('new', function(x) init() end)
   params:add_separator()
   params:add{type = "number", id = "jf.ii mode", min = 0, max = 1, default = 1, action = function(x) crow.ii.jf.mode(x) end}
-  params:add{type = "number", id = "jf.ii God Note", min = 0, max = 1, default = 0, action = function(value) crow.ii.jf.god_mode(value) end}
+  params:add{type = "number", id = "jf.ii God Note", min = 0, max = 1, default = 0, action = function(value) crow.ii.jf.god_mode(value)
   params:add_separator()
   params:add_control("EXT", "/ External level", controlspec.new(0, 1, 'lin', 0, 1, ""))
   params:set_action("EXT", function(x) audio.level_adc_cut(x) end)
@@ -417,19 +416,19 @@ function keyboard.event(typ, code, val)
       if shift then selected_area_x = util.clamp(selected_area_x -  (ctrl and 9 or 1) ,1,orca.w) 
       else x_index = util.clamp(x_index - (ctrl and 9 or 1), 1,orca.w) end
       update_offset(x_index, y_index)
-    elseif menu then if ctrl then norns.enc(1, -8) else norns.enc(3, shift and -20 or -2) end end
+    elseif menu then if ctrl then _norns.enc(1, -8) else _norns.enc(3, shift and -20 or -2) end end
   elseif (code == hid.codes.KEY_RIGHT) and (val == 1 or val == 2) then
     if not menu then
       if shift then selected_area_x = util.clamp(selected_area_x + (ctrl and 9 or 1), 1, orca.w - x_index) 
       else x_index = util.clamp(x_index + (ctrl and 9 or 1), 1,orca.w) end
       update_offset(x_index, y_index)
-    elseif menu then if ctrl then norns.enc(1, 8) else norns.enc(3, shift and 20 or 2) end end
+    elseif menu then if ctrl then _norns.enc(1, 8) else _norns.enc(3, shift and 20 or 2) end end
   elseif (code == hid.codes.KEY_DOWN) and (val == 1 or val == 2) then
     if not menu then
       if shift then selected_area_y = util.clamp(selected_area_y + (ctrl and 9 or 1), 1,orca.h - y_index) 
       else y_index = util.clamp(y_index + (ctrl and 9 or 1), 1, orca.h) end
       update_offset(x_index, y_index)
-    elseif menu then norns.enc(2, shift and 104 or 2) end
+    elseif menu then _norns.enc(2, shift and 104 or 2) end
   elseif (code == hid.codes.KEY_UP) and (val == 1 or val == 2) then
     if not menu then
       if shift then 
@@ -439,7 +438,7 @@ function keyboard.event(typ, code, val)
       end
       update_offset(x_index, y_index)
     elseif menu then 
-      norns.enc(2, shift and -104 or -2) 
+      _norns.enc(2, shift and -104 or -2) 
     end
   elseif code == 56 then
     alt = (val == 1 or val == 2 ) and true or false
@@ -460,11 +459,11 @@ function keyboard.event(typ, code, val)
     if shift then 
       norns.menu.toggle(not menu)
     elseif menu and not shift then 
-      norns.key(2, 1) 
+      _norns.key(2, 1) 
     end
   elseif (code == hid.codes.KEY_ENTER and val == 1) then
     if menu then 
-      norns.key(3, 1) 
+      _norns.key(3, 1) 
     else
       if orca:op(x_index, y_index) then
         local g = orca.up(orca:glyph_at(x_index, y_index))
