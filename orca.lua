@@ -334,6 +334,7 @@ function orca:init_field( w, h )
 end
 
 
+
 function init()
   orca:init_field( w, h )
   for i = 1, 8 do orca.grid[i] = {}  end
