@@ -10,8 +10,8 @@ local rnote = function ( self, x, y )
   local get_scale = self:get_scale(scale)
   local scale_name = get_scale[1]
   local note_array = get_scale[2]
-  print scale_name
-  
+  print(scale_name)
+
   local out
   
   if mode then 
