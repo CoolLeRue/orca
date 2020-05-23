@@ -71,21 +71,21 @@ local crow_jf_poly = function (self, x, y)
 	  ['9'] = 16,
 	}
 
-	local octave = (util.clamp( self:listen( self.x + 2, self.y ) or 3, 0, 6 ) * 12) - 36
+	local octave = (util.clamp( self:listen( self.x + 1, self.y ) or 3, 0, 6 ) * 12) - 36
 	local note = 'C'
 	--print('note')
 	--print(note)
-	if self:glyph_at(self.x + 3, self.y) == '.' then 
+	if self:glyph_at(self.x + 2, self.y) == '.' then 
 		note = 'C'
 		--print('note')
 		--print(note)
 	else
-		note = self:glyph_at(self.x + 3, self.y)
+		note = self:glyph_at(self.x + 2, self.y)
 		--print('note')
 	    --print(note)	
 	end
 
-	local level = util.clamp( self:listen( self.x + 4, self.y ) or 3, 0, 5 )
+	local level = util.clamp( self:listen( self.x + 3, self.y ) or 3, 0, 5 )
 	
 	--print('note')
 	--print(note)
