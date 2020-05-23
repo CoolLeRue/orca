@@ -2,7 +2,7 @@ local crow_jf = function (self, x, y)
 
 	self.y = y
 	self.x = x
-	self.name = 'crow_ii_jf'
+	self.name = 'crow_ii_jf_voice'
 	self.ports = { {1, 0, 'in-port' }, {2, 0, 'in-octave' }, {3, 0, 'in-note' }, {4, 0, 'in-level' }}
 	self:spawn(self.ports)
 

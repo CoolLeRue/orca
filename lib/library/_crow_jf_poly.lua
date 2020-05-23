@@ -2,7 +2,7 @@ local crow_jf_poly = function (self, x, y)
 
 	self.y = y
 	self.x = x
-	self.name = 'crow_ii_jf'
+	self.name = 'crow_ii_jf_note'
 	self.ports = {  {1, 0, 'in-octave' }, {2, 0, 'in-note' }, {3, 0, 'in-level' }}
 	self:spawn(self.ports)
 
