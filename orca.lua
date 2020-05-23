@@ -337,21 +337,21 @@ function init()
   orca:init_field( w, h )
   for i = 1, 8 do orca.grid[i] = {}  end
     -- 
-  function pulse()
-    while true do
-      clock.sync(1/4)
-      orca:operate()
-      g:redraw()
-    end
-  end
+  --function pulse()
+  --  while true do
+  --    clock.sync(1/4)
+  --    orca:operate()
+  --    g:redraw()
+  --  end
+  --end
   clock.run(pulse)
 
--- clock.on_step = function() orca:operate()  g:redraw() end,   
--- clock:add_clock_params()
--- clock:start()
+clock.on_step = function() orca:operate()  g:redraw() end,   
+clock:add_clock_params()
+clock:start()
   --
   crow.ii.pullup(true)
---  params:set("bpm", 120)
+  params:set("bpm", 120)
   params:add_separator()
   params:add_trigger('save_p', "< Save project" )
   params:set_action('save_p', function(x) textentry.enter(orca.save_project,  orca.project) end)
