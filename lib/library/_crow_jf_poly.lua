@@ -107,4 +107,4 @@ local crow_jf_poly = function (self, x, y)
 
 end
 
-return crow_jf
+return crow_jf_poly
