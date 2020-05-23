@@ -9,9 +9,11 @@ local midi_in = function ( self, x, y )
 
   local ch = self:listen( self.x + 1, self.y ) or 1
   local keyout = self.notes[ ( ( self.vars.midi[ch] or 1 ) % 12 ) + 1 ]
-  local val = 1
+  local val = 0
   if keyout ~= keyout2 then
   	val = 0 
+  else
+  	val = 1
   end
   local keyout2 = keyout
   local bangout = ( val == 0 ) and '*' or '.'
