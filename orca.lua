@@ -9,8 +9,10 @@
 local tab = require 'tabutil'
 local fileselect = require "fileselect"
 local textentry = require "textentry"
+local beatclock = require 'beatclock'
 local music = require 'musicutil'
 local euclid = require 'er'
+local clock = beatclock.new()
 local keycodes = include("lib/keycodes")
 local transpose_table = include("lib/transpose")
 local library = include( "lib/library" )
