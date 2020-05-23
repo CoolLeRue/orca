@@ -3,6 +3,7 @@ local Q = function (self, x, y )
   self.y = y
   self.x = x
   self.name = 'query'
+  -- self.info = 'Reads operands with offset'
   self.ports = { {-3, 0, 'in-y' }, {-2, 0, 'in-x' }, {-1, 0, 'in-length' } }
   self:spawn(self.ports)
 
@@ -17,8 +18,6 @@ local Q = function (self, x, y )
     self:write( i - length, 1, val) 
   end
   
-    
 end
-
 
 return Q

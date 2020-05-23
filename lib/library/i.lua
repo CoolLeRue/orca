@@ -3,6 +3,7 @@ local I = function (self, x, y )
   self.y = y
   self.x = x
   self.name = 'increment'
+  -- self.info = 'Increments southward operand'
   self.ports = { {-1, 0 , 'in-a' }, {1, 0, 'in-b' }, {0, 1, 'i-out' } }
   self:spawn(self.ports)
 

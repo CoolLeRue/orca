@@ -3,6 +3,7 @@ local R = function (self, x, y )
   self.y = y
   self.x = x
   self.name = 'random'
+  -- self.info = 'Outputs random value'
   self.ports = { {-1, 0, 'in-a'}, { 1, 0, 'in-b'}, {0, 1, 'r-output'} }
   self:spawn(self.ports)
 

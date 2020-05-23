@@ -3,6 +3,7 @@ local O = function(self, x, y )
   self.y = y
   self.x = x
   self.name = 'offset'
+  -- self.info = 'Reads operand with offset'
   self.ports = { {-1, 0, 'in-x' }, {-2, 0, 'in-y' }, {0, 1, 'o-output' } }
   
   local a = util.clamp(self:listen(self.x - 2, self.y) or 1, 1, 35)
