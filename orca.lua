@@ -346,7 +346,7 @@ function init()
   --    g:redraw()
   --  end
   --end
-  clock.run(pulse)
+ -- clock.run(pulse)
 
 clock.on_step = function() orca:operate()  g:redraw() end,   
 clock:add_clock_params()
