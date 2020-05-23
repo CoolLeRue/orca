@@ -9,10 +9,8 @@
 local tab = require 'tabutil'
 local fileselect = require "fileselect"
 local textentry = require "textentry"
-local beatclock = require 'beatclock'
 local music = require 'musicutil'
 local euclid = require 'er'
-local clock = beatclock.new()
 local keycodes = include("lib/keycodes")
 local transpose_table = include("lib/transpose")
 local library = include( "lib/library" )
@@ -27,8 +25,8 @@ local hood = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } }
 local dot_density = 7
 local copy_buffer = { }
 local pt = {} 
-local w = 64
-local h = 24
+local w = 128
+local h = 128
 
 orca = {
   project = 'untitled',
@@ -339,12 +337,21 @@ function init()
   orca:init_field( w, h )
   for i = 1, 8 do orca.grid[i] = {}  end
     -- 
-  clock.on_step = function() orca:operate()  g:redraw() end,
-  clock:add_clock_params()
-  clock:start()
+  function pulse()
+    while true do
+      clock.sync(1/4)
+      orca:operate()
+      g:redraw()
+    end
+  end
+  clock.run(pulse)
+
+-- clock.on_step = function() orca:operate()  g:redraw() end,   
+-- clock:add_clock_params()
+-- clock:start()
   --
   crow.ii.pullup(true)
-  params:set("bpm", 120)
+--  params:set("bpm", 120)
   params:add_separator()
   params:add_trigger('save_p', "< Save project" )
   params:set_action('save_p', function(x) textentry.enter(orca.save_project,  orca.project) end)
