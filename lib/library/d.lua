@@ -3,6 +3,7 @@ local D = function ( self, x, y )
   self.y = y
   self.x = x
   self.name = 'delay'
+  -- self.info = 'Bangs on modulo of frame'
   self.ports = { {-1, 0 , 'in-rate' }, {1, 0, 'in-mod' }, {0, 1, 'd-output' } }
   self:spawn(self.ports)
 

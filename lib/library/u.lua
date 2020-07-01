@@ -3,6 +3,7 @@ local U  = function (self, x, y )
   self.y = y
   self.x = x
   self.name = 'uclid'
+  -- self.info = 'Bangs on Euclidean rhythm'
   self.ports = { {-1, 0, 'in-pulses' },  { 1, 0, 'in-steps' }, {0, 1, 'u-output' } }
   self:spawn(self.ports)
 

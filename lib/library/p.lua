@@ -3,6 +3,7 @@ local P = function (self, x, y )
   self.y = y
   self.x = x
   self.name = 'push'
+  -- self.info = 'Writes eastward operand'
   self.ports = { {-1, 0, 'in-length' }, {-2, 0, 'in-position' }, {1, 0, 'in-value' } }
   self:spawn(self.ports)
   
@@ -15,7 +16,5 @@ local P = function (self, x, y )
   self:write(pos - 1, 1,  val)
 
 end
-
-  
   
 return P

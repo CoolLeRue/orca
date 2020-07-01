@@ -3,6 +3,7 @@ local M  = function ( self, x, y )
   self.y = y
   self.x = x
   self.name = 'multiply'
+  -- self.info = 'Outputs product of inputs'
   self.ports = { {-1, 0 , 'in-a' }, {1, 0, 'in-b' }, {0, 1, 'm-output' } }
   self:spawn(self.ports)
 

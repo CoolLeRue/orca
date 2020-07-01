@@ -3,6 +3,7 @@ local C = function ( self, x, y )
   self.y = y
   self.x = x
   self.name = 'clock'
+  -- self.info = 'Outputs modulo of frame'
   self.ports = { {-1, 0 , 'in-rate' },  {1, 0, 'in-mod' }, {0, 1, 'c-output' } }
   self:spawn(self.ports)
 
@@ -11,7 +12,7 @@ local C = function ( self, x, y )
   mod = mod == 0 and 1 or mod
   rate = rate == 0 and 1 or rate
   local val = ( math.floor( self.frame / rate ) % mod ) + 1
-	
+  
   self:write(0, 1, self.chars[val])
   
 end

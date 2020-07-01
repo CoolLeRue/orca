@@ -3,6 +3,7 @@ local T = function (self, x, y )
   self.y = y
   self.x = x
   self.name = 'track'
+  -- self.info = 'Reads eastward operand'
   self.ports = { {-1, 0, 'in-length'}, {-2, 0, 'in-position'},  {1, 0, 'in-value'}, {0, 1, 't-output' } }
   self:spawn(self.ports)
 
@@ -16,8 +17,4 @@ local T = function (self, x, y )
   
 end
 
- 
- 
- 
- 
 return T

@@ -3,6 +3,7 @@ local V = function (self, x, y )
   self.y = y
   self.x = x
   self.name = 'variable'
+  -- self.info = 'Reads and writes variable'
   self.ports = { {-1, 0, 'in-write' }, {1, 0, 'in-read' } }
   
   local a = self:listen(self.x - 1, self.y, 0) 

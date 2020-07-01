@@ -3,6 +3,7 @@ local G = function(self, x, y )
   self.y = y
   self.x = x
   self.name = 'generator'
+  -- self.info = 'Writes operands with offset'
   self.ports = { {-3, 0 , 'in-y' }, {-2, 0, 'in-x' }, {-1, 0, 'in-length' } }
   self:spawn(self.ports)
 
