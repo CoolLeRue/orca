@@ -4,7 +4,7 @@ local X = function(self, x, y)
   self.x = x
   self.name = 'write'
   -- self.info = 'Writes operand with offset'
-  self.ports = { {-1, 0, 'in-x' }, {-2, 0, 'in-y' }, {1, 0, 'x-val' } }
+  self.ports = { {-1, 0, 'in-y' }, {-2, 0, 'in-x' }, {1, 0, 'x-val' } }
   self:spawn(self.ports)
 
   local a = self:listen(self.x - 2, self.y) or 0
