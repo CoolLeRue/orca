@@ -3,7 +3,8 @@ local crow_wsyn = function (self, x, y)
 	self.y = y
 	self.x = x
 	self.name = 'crow_wsyn'
-	self.ports = { {1, 0, 'in-octave' }, {2, 0, 'in-note' }, {3, 0, 'in-level' }, {4, 0, 'in-lpgTime' }, {5, 0, 'in-lpgShape' }}
+	self.ports = { {1, 0, 'in-octave' }, {2, 0, 'in-note' }, {3, 0, 'in-level' }}
+	--self.ports = { {1, 0, 'in-octave' }, {2, 0, 'in-note' }, {3, 0, 'in-level' }, {4, 0, 'in-lpgTime' }, {5, 0, 'in-lpgShape' }}
 	self:spawn(self.ports)
 
 	local transpose_tab = {
@@ -69,7 +70,7 @@ local crow_wsyn = function (self, x, y)
 	  ['7'] = 12,
 	  ['8'] = 14,
 	  ['9'] = 16,
-	}
+	} 
 
 
 	local octave = (util.clamp( self:listen( self.x + 1, self.y ) or 3, 0, 7 ) * 12) - 36
@@ -102,8 +103,8 @@ local crow_wsyn = function (self, x, y)
     
 	if self:neighbor(self.x, self.y, '*') then
 		--tot_note = tot_note / 12
-		crow.send('ii.wsyn.lpg_time('..time..')') 
-		crow.send('ii.wsyn.lpg_symetry('..shape..')') 
+		--crow.send('ii.wsyn.lpg_time('..time..')') 
+		--crow.send('ii.wsyn.lpg_symetry('..shape..')') 
 		crow.send('ii.wsyn.play_note( '..(tot_note / 12)..', '..(level/1)..')')
 		redraw()
 	end
