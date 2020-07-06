@@ -102,7 +102,7 @@ local crow_wsyn = function (self, x, y)
     
 	if self:neighbor(self.x, self.y, '*') then
 		tot_note = tot_note / 12
-		crow.send("ii.wsyn.lpg_time("..time..") ii.wsyn.lpg_symmetry("..shape..") ii.wsyn.play_voice("..tot_note..", "..level.." )")
+		crow.send(ii.wsyn.play_voice("..tot_note..", "..level.." ))
 		redraw()
 	end
 
