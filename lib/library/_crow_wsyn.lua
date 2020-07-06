@@ -94,15 +94,15 @@ local crow_wsyn = function (self, x, y)
 	--print(octave)
 	--print(transpose_tab[note])
 	local tot_note = transpose_tab[note] + octave
-	--local time = util.linlin(0, 35, -5, 5, self:listen( self.x + 4, self.y ) or 17)
-	--local shape = util.linlin(0, 35, -5, 5, self:listen( self.x + 5, self.y ) or 17)
-	print('tot_note')
-	print(tot_note)
+	local time = util.linlin(0, 35, -5, 5, self:listen( self.x + 4, self.y ) or 17)
+	local shape = util.linlin(0, 35, -5, 5, self:listen( self.x + 5, self.y ) or 17)
+	--print('tot_note')
+	--print(tot_note)
 
     
 	if self:neighbor(self.x, self.y, '*') then
 		--tot_note = tot_note / 12
-		crow.send('ii.wsyn.play_note( '..(tot_note / 12)..', '..(level/1)..')')
+		crow.send('ii.wsyn.ar_mode(true)','ii.wsyn.lpg_time('..time..')', 'ii.wsyn.lpg_symetry('..lpg_symetry..')', 'ii.wsyn.play_note( '..(tot_note / 12)..', '..(level/1)..')')
 		redraw()
 	end
 
