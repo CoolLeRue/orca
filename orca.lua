@@ -525,6 +525,7 @@ clock:start()
     controlspec=controlspec.new(-5, 5, 'lin', 0, 0, 'v'),
     action=function(val) crow.send('ii.wsyn.lpg_symmetry('..val..')') end
   }
+  params:add_separator()
   params:add_control("EXT", "/ External level", controlspec.new(0, 1, 'lin', 0, 1, ""))
   params:set_action("EXT", function(x) audio.level_adc_cut(x) end)
   params:add_control("ENG", "/ Engine level", controlspec.new(0, 1, 'lin', 0, 1, ""))
