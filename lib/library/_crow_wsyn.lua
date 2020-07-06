@@ -96,8 +96,8 @@ local crow_wsyn = function (self, x, y)
 	local tot_note = transpose_tab[note] + octave
 	--local time = util.linlin(0, 35, -5, 5, self:listen( self.x + 4, self.y ) or 17)
 	--local shape = util.linlin(0, 35, -5, 5, self:listen( self.x + 5, self.y ) or 17)
-	--print('tot_note')
-	--print(tot_note)
+	print('tot_note')
+	print(tot_note)
 
     
 	if self:neighbor(self.x, self.y, '*') then
