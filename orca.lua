@@ -452,6 +452,79 @@ clock:start()
   params:add{type = "number", id = "jf.ii mode", min = 0, max = 1, default = 1, action = function(x) crow.ii.jf.mode(x) end}
   params:add{type = "number", id = "jf.ii God Note", min = 0, max = 1, default = 0, action = function(value) crow.ii.jf.god_mode(value) end}
   params:add_separator()
+    params:add_separator('wsyn')
+
+  params:add{
+    type='option',
+    id='wsyn_ar_mode',
+    name='ar mode',
+    options={'off', 'on'},
+    action=function(val) crow.send('ii.wsyn.ar_mode('..(val - 1)..')') end
+  }
+
+  params:add{
+    type='control',
+    id='wsyn_curve',
+    name='curve',
+    controlspec=controlspec.new(-5, 5, 'lin', 0, 0, 'v'),
+    action=function(val) crow.send('ii.wsyn.curve('..val..')') end
+  }
+
+  params:add{
+    type='control',
+    id='wsyn_ramp',
+    name='ramp',
+    controlspec=controlspec.new(-5, 5, 'lin', 0, 0, 'v'),
+    action=function(val) crow.send('ii.wsyn.ramp('..val..')') end
+  }
+
+  params:add{
+    type='control',
+    id='wsyn_fm_index',
+    name='fm index',
+    controlspec=controlspec.new(0, 5, 'lin', 0, 0, 'v'),
+    action=function(val) crow.send('ii.wsyn.fm_index('..val..')') end
+  }
+
+  params:add{
+    type='control',
+    id='wsyn_fm_env',
+    name='fm env',
+    controlspec=controlspec.new(-5, 5, 'lin', 0, 0, 'v'),
+    action=function(val) crow.send('ii.wsyn.fm_env('..val..')') end
+  }
+
+  params:add{
+    type='control',
+    id='wsyn_fm_ratio_num',
+    name='fm ratio numerator',
+    controlspec=controlspec.new(1, 20, 'lin', 1, 2),
+    action=function(val) crow.send('ii.wsyn.fm_ratio('..val..','..params:get('wsyn_fm_ratio_den')..')') end
+  }
+
+  params:add{
+    type='control',
+    id='wsyn_fm_ratio_den',
+    name='fm ratio denominator',
+    controlspec=controlspec.new(1, 20, 'lin', 1, 1),
+    action=function(val) crow.send('ii.wsyn.fm_ratio('..params:get('wsyn_fm_ratio_num')..','..val..')') end
+  }
+
+  params:add{
+    type='control',
+    id='wsyn_lpg_time',
+    name='lpg time',
+    controlspec=controlspec.new(-5, 5, 'lin', 0, 0, 'v'),
+    action=function(val) crow.send('ii.wsyn.lpg_time('..val..')') end
+  }
+
+  params:add{
+    type='control',
+    id='wsyn_lpg_symmetry',
+    name='lpg symmetry',
+    controlspec=controlspec.new(-5, 5, 'lin', 0, 0, 'v'),
+    action=function(val) crow.send('ii.wsyn.lpg_symmetry('..val..')') end
+  }
   params:add_control("EXT", "/ External level", controlspec.new(0, 1, 'lin', 0, 1, ""))
   params:set_action("EXT", function(x) audio.level_adc_cut(x) end)
   params:add_control("ENG", "/ Engine level", controlspec.new(0, 1, 'lin', 0, 1, ""))
