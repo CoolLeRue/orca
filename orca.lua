@@ -440,6 +440,7 @@ function init()
 -- clock:start()
   function pulse()
     while true do
+      clock.sync(1)
       orca:operate()
       g:redraw()
     end
@@ -651,7 +652,7 @@ function keyboard.event(typ, code, val)
     end
   elseif (code == hid.codes.KEY_SPACE) and (val == 1) then
     if clock.run(pulse) then
-      clock.run() 
+     clock.cancel(clock.run(pulse)) 
       engine.noteKillAll()
       for i=1, 6 do
         softcut.play(i,0)
