@@ -440,7 +440,7 @@ function init()
 -- clock:start()
   function pulse()
     while true do
-      clock.sync(1)
+      clock.sync(1/4)
       orca:operate()
       g:redraw()
     end
