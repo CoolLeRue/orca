@@ -35,10 +35,10 @@
 local tab = require "tabutil"
 local fileselect = require "fileselect"
 local textentry = require "textentry"
-local beatclock = require "beatclock"
+-- local beatclock = require "beatclock"
 local music = require "musicutil"
 local euclid = require "er"
-local clock = beatclock.new()
+-- local clock = beatclock.new()
 local keycodes = include("lib/keycodes")
 local transpose_table = include("lib/transpose")
 local library = include( "lib/library" )
@@ -435,12 +435,22 @@ function init()
   orca:init_field( w, h )
   for i = 1, 8 do orca.grid[i] = {}  end
     -- 
-clock.on_step = function() orca:operate()  g:redraw() end,   
-clock:add_clock_params()
-clock:start()
+-- clock.on_step = function() orca:operate()  g:redraw() end,   
+-- clock:add_clock_params()
+-- clock:start()
+  function pulse()
+    while true do
+      clock.sync(1)
+      orca:operate()
+      g:redraw()
+    end
+  end
+
+  clock.run(pulse)
+
   --
   crow.ii.pullup(true)
-  params:set("bpm", 120)
+--  params:set("bpm", 120)
   params:add_separator()
   params:add_trigger('save_p', "< Save project" )
   params:set_action('save_p', function(x) textentry.enter(orca.save_project,  orca.project) end)
@@ -452,7 +462,7 @@ clock:start()
   params:add{type = "number", id = "jf.ii mode", min = 0, max = 1, default = 1, action = function(x) crow.ii.jf.mode(x) end}
   params:add{type = "number", id = "jf.ii God Note", min = 0, max = 1, default = 0, action = function(value) crow.ii.jf.god_mode(value) end}
   params:add_separator()
-    params:add_separator('wsyn')
+  params:add_separator('wsyn')
 
   params:add{
     type='option',
@@ -536,7 +546,7 @@ clock:start()
   params:add_separator()
   orca.midi_out_device = midi.connect(1)
   orca.midi_out_device.event = function(data)
-    clock:process_midi(data)
+   -- clock:process_midi(data)
     local m = midi.to_msg(data)
     if m.type == 'cc' then
       orca.vars.midi_cc[m.cc] = m.val
@@ -641,12 +651,13 @@ function keyboard.event(typ, code, val)
       end
     end
   elseif (code == hid.codes.KEY_SPACE) and (val == 1) then
-    if clock.playing then
-      clock:stop() engine.noteKillAll()
+    if clock.run(pulse) then
+      clock.run() 
+      engine.noteKillAll()
       for i=1, 6 do
         softcut.play(i,0)
       end
-    else clock:start()
+    else clock.run(pulse)
     end
   elseif ctrl and code == 12 and (val == 1 or val == 2) then
     params:set("bpm", params:get("bpm") - 10)
