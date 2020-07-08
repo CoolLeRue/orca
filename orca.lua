@@ -61,6 +61,7 @@ local copy_buffer = { }
 local pt = {}
 local w = 128
 local h = 128
+local running = true
 
 orca = {
   project = "untitled",
@@ -435,6 +436,7 @@ function pulse()
     clock.sync(1/4)
     orca:operate()
     g:redraw()
+    running = true
   end
   return
 end
@@ -654,8 +656,9 @@ function keyboard.event(typ, code, val)
       end
     end
   elseif (code == hid.codes.KEY_SPACE) and (val == 1) then
-    if clock_id then
-     clock.cancel(clock_id) 
+    if running then
+     clock.cancel(clock_id)
+     running = false 
       engine.noteKillAll()
       for i=1, 6 do
         softcut.play(i,0)
