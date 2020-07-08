@@ -62,7 +62,7 @@ local pt = {}
 local w = 128
 local h = 128
 local running = true
-local clock_id = clock.run(pulse)
+
 
 orca = {
   project = "untitled",
@@ -440,6 +440,7 @@ function pulse()
   end
 end
 
+local clock_id = clock.run(pulse)
 
 function init()
   orca:init_field( w, h )
