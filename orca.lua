@@ -434,13 +434,23 @@ end
 
 function pulse()
   while true do
+    running = true
     clock.sync(1/4)
     orca:operate()
     g:redraw()
   end
 end
 
-local clock_id = clock.run(pulse)
+function clock.transport.start()
+  print("Start Clock")
+  id = clock.run(pulse)
+end
+
+function clock.transport.stop()
+  print("Stop Clock")
+  clock.cancel(id)
+end
+
 
 function init()
   orca:init_field( w, h )
@@ -449,10 +459,9 @@ function init()
 -- clock.on_step = function() orca:operate()  g:redraw() end,   
 -- clock:add_clock_params()
 -- clock:start()
+clock.transport.start()
 
-  running = true
-
-  --
+--
   crow.ii.pullup(true)
 --  params:set("bpm", 120)
   params:add_separator()
@@ -656,7 +665,7 @@ function keyboard.event(typ, code, val)
     end
   elseif (code == hid.codes.KEY_SPACE) and (val == 1) then
     if running then
-     clock.cancel(clock_id)
+     clock.transport.stop()
      running = false 
      print("stop")
      print(running)
@@ -664,7 +673,8 @@ function keyboard.event(typ, code, val)
       for i=1, 6 do
         softcut.play(i,0)
       end
-    else clock.run(pulse)
+    else 
+      clock.transport.start()
       running = true
       print('run')
       print(running)  
