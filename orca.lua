@@ -436,9 +436,7 @@ function pulse()
     clock.sync(1/4)
     orca:operate()
     g:redraw()
-    running = true
   end
-  return
 end
 
 
@@ -452,6 +450,7 @@ function init()
 
 
   clock_id = clock.run(pulse)
+  running = true
 
   --
   crow.ii.pullup(true)
