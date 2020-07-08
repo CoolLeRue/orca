@@ -659,11 +659,15 @@ function keyboard.event(typ, code, val)
     if running then
      clock.cancel(clock_id)
      running = false 
+     print("stop")
+     print(running)
       engine.noteKillAll()
       for i=1, 6 do
         softcut.play(i,0)
       end
     else clock.run(pulse)
+      print('run')
+      print(running)  
     end
   elseif ctrl and (code == hid.codes.KEY_COMMA) and (val == 1 or val == 2) then
     params:set("clock_tempo", params:get("clock_tempo") - 10)
