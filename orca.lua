@@ -659,9 +659,9 @@ function keyboard.event(typ, code, val)
       end
     else clock.run(pulse)
     end
-  elseif ctrl and code == 12 and (val == 1 or val == 2) then
+  elseif ctrl and (code == hid.codes.KEY_COMMA) and (val == 1 or val == 2) then
     params:set("clock_tempo", params:get("clock_tempo") - 10)
-  elseif ctrl and code == 13 and (val == 1 or val == 2) then
+  elseif ctrl and (code == hid.codes.KEY_DOT) and (val == 1 or val == 2) then
     params:set("clock_tempo", params:get("clock_tempo") + 10)
   else if val == 1 then
     local keyinput = get_key(code, val, shift)
