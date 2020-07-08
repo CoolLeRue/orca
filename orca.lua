@@ -430,6 +430,15 @@ function orca:init_field( w, h )
   self.info = {}
 end
 
+function pulse()
+  while true do
+    clock.sync(1/2)
+    orca:operate()
+    g:redraw()
+  end
+  return
+end
+
 
 function init()
   orca:init_field( w, h )
@@ -438,13 +447,7 @@ function init()
 -- clock.on_step = function() orca:operate()  g:redraw() end,   
 -- clock:add_clock_params()
 -- clock:start()
-  function pulse()
-    while true do
-      clock.sync(1/2)
-      orca:operate()
-      g:redraw()
-    end
-  end
+
 
   clock.run(pulse)
 
