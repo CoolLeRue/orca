@@ -660,9 +660,9 @@ function keyboard.event(typ, code, val)
     else clock.run(pulse)
     end
   elseif ctrl and code == 12 and (val == 1 or val == 2) then
-    params:set("bpm", params:get("bpm") - 10)
+    params:set("clock_tempo", params:get("clock_tempo") - 10)
   elseif ctrl and code == 13 and (val == 1 or val == 2) then
-    params:set("bpm", params:get("bpm") + 10)
+    params:set("clock_tempo", params:get("clock_tempo") + 10)
   else if val == 1 then
     local keyinput = get_key(code, val, shift)
     if not ctrl then
@@ -745,7 +745,7 @@ local function draw_bar()
   screen.level(0) screen.rect(0, 56, 128, 8) screen.fill()
   screen.level(9) screen.move(2, 63)
   screen.font_face(25) screen.font_size(6) screen.text(text) screen.stroke()
-  screen.move(80,63) screen.text(params:get("bpm") .. (orca.frame % 4 == 0 and " *" or "")) screen.stroke()
+  screen.move(80,63) screen.text(params:get("clock_tempo") .. (orca.frame % 4 == 0 and " *" or "")) screen.stroke()
   screen.move(123,63) screen.text_right(x_index .. "," .. y_index) screen.stroke()
 end
 
