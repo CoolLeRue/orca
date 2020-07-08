@@ -666,6 +666,7 @@ function keyboard.event(typ, code, val)
         softcut.play(i,0)
       end
     else clock.run(pulse)
+      running = true
       print('run')
       print(running)  
     end
