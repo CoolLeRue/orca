@@ -450,7 +450,7 @@ function init()
 -- clock:start()
 
 
-  clock_id
+  clock_id = clock.run(pulse)
   running = true
 
   --
