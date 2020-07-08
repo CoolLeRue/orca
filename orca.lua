@@ -432,7 +432,7 @@ end
 
 function pulse()
   while true do
-    clock.sync(1/2)
+    clock.sync(1/4)
     orca:operate()
     g:redraw()
   end
@@ -449,7 +449,7 @@ function init()
 -- clock:start()
 
 
-  clock.run(pulse)
+  clock_id = clock.run(pulse)
 
   --
   crow.ii.pullup(true)
@@ -654,8 +654,8 @@ function keyboard.event(typ, code, val)
       end
     end
   elseif (code == hid.codes.KEY_SPACE) and (val == 1) then
-    if clock.run(pulse) then
-     clock.cancel(clock.run(pulse)) 
+    if clock_id then
+     clock.cancel(clock_id) 
       engine.noteKillAll()
       for i=1, 6 do
         softcut.play(i,0)
