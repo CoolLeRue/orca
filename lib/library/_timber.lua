@@ -3,9 +3,7 @@ local timber = function ( self, x, y )
   self.y = y
   self.x = x
   self.name = 'engine'
-  self.ports = { {1, 0, 'in-sample'}, {2, 0, 'in-octave'}, {3, 0, 'in-note'}, {4, 0, 'in-level'}, }
-  -- Removing Start Position param until someone smarter figures it out :) Delete line above and uncomment everything to revert. 
-  --self.ports = { {1, 0, 'in-sample'}, {2, 0, 'in-octave'}, {3, 0, 'in-note'}, {4, 0, 'in-level'}, {5, 0, 'in-position'} }
+  self.ports = { {1, 0, 'in-sample'}, {2, 0, 'in-octave'}, {3, 0, 'in-note'}, {4, 0, 'in-level'}, {5, 0, 'in-position'} }
   self:spawn(self.ports)
   
   local sample = self:listen( self.x + 1, self.y ) or 0

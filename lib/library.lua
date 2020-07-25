@@ -1,5 +1,6 @@
 local ops = {}
 ops['#'] = include("lib/library/_comment")
+-- ops['='] = include("lib/library/_osc_out")
 ops['='] = include("lib/library/_crow_jf")
 ops['+'] = include("lib/library/_crow_jf_poly")
 ops['*'] = include("lib/library/_bang")
